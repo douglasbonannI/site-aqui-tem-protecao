@@ -1,0 +1,90 @@
+/* Extras — Aqui Tem Proteção (somados ao styles.css original; não substituem nada) */
+#read-progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--grad-accent);transform:scaleX(0);transform-origin:left;z-index:2000;pointer-events:none}
+
+/* Faixa de empresas parceiras */
+.partners-strip{background:#fff;padding:2.2rem 0 2.4rem;border-bottom:1px solid var(--clr-border);overflow:hidden}
+.partners-strip .ps-title{text-align:center;font-family:var(--font-heading);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--clr-text-muted);margin-bottom:1.2rem}
+.ps-track{display:flex;gap:1.1rem;width:max-content;animation:ps-scroll 38s linear infinite}
+.partners-strip:hover .ps-track{animation-play-state:paused}
+.ps-item{height:64px;min-width:150px;padding:10px 22px;border:1px solid var(--clr-border);border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center}
+.ps-item img{max-height:40px;max-width:130px;object-fit:contain}
+.ps-item b{font-family:var(--font-heading);color:var(--clr-primary-dark);font-size:1.05rem}
+.ps-note{text-align:center;color:var(--clr-text-muted);font-size:.85rem;margin-top:1rem}
+@keyframes ps-scroll{to{transform:translateX(calc(-50% - .55rem))}}
+
+/* Como funciona + acompanhamento */
+.how{padding:var(--spacing-section) 0;background:var(--clr-white)}
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;counter-reset:s}
+.how-step{position:relative;background:var(--clr-bg-light);border:1px solid var(--clr-border);border-radius:var(--border-radius-lg);padding:2rem 1.5rem 1.6rem}
+.how-step::before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:1.5rem;width:38px;height:38px;border-radius:50%;background:var(--grad-accent);color:#fff;font-family:var(--font-heading);font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(232,99,28,.35)}
+.how-step h3{font-size:1.15rem;margin-bottom:.5rem}
+.how-step p{color:var(--clr-text-muted);font-size:.97rem}
+.who-box{margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.who-card{border-radius:var(--border-radius-lg);padding:2rem;color:#fff;background:var(--grad-primary);position:relative;overflow:hidden}
+.who-card.alt{background:linear-gradient(135deg,#0A2E57,#143d73)}
+.who-card h3{color:#fff;font-size:1.3rem;margin-bottom:.6rem}
+.who-card p{color:rgba(255,255,255,.88)}
+.who-card .grad{background:var(--grad-accent);-webkit-background-clip:text;background-clip:text;color:transparent}
+.who-card i{font-size:2rem;color:#FF9457;margin-bottom:.6rem;display:block}
+
+/* FAQ */
+.faq{padding:var(--spacing-section) 0;background:var(--clr-bg-light)}
+.faq-list{max-width:860px;margin:0 auto;display:grid;gap:.8rem}
+.faq details{background:#fff;border:1px solid var(--clr-border);border-radius:var(--border-radius);padding:0 1.4rem;transition:box-shadow .2s}
+.faq details[open]{box-shadow:var(--shadow-md);border-color:rgba(0,82,204,.3)}
+.faq summary{cursor:pointer;list-style:none;padding:1.2rem 0;font-family:var(--font-heading);font-weight:700;color:var(--clr-primary-dark);font-size:1.08rem;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.6rem;line-height:1;color:var(--clr-secondary);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .ans{padding:0 0 1.3rem;color:var(--clr-text-muted)}
+.faq .ans a{color:var(--clr-primary);text-decoration:underline}
+
+/* Bolha de avaliação flutuante */
+#rbubble{position:fixed;left:22px;bottom:22px;max-width:330px;background:#fff;border-radius:18px;padding:14px 16px;box-shadow:0 18px 50px rgba(10,46,87,.25);border:1px solid var(--clr-border);z-index:900;opacity:0;transform:translateY(18px);pointer-events:none;transition:opacity .5s,transform .5s}
+#rbubble.on{opacity:1;transform:translateY(0);pointer-events:auto;animation:rb-float 5s ease-in-out infinite}
+@keyframes rb-float{50%{transform:translateY(-6px)}}
+#rbubble .rb-top{display:flex;gap:10px;align-items:center}
+#rbubble .rb-av{width:36px;height:36px;border-radius:50%;background:var(--clr-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:700}
+#rbubble b{display:block;font-size:.92rem;color:var(--clr-text-main);line-height:1.2}
+#rbubble small{color:var(--clr-text-muted);font-size:.75rem}
+#rbubble .rb-st{color:#FBBC04;letter-spacing:2px;margin:6px 0 2px;font-size:.95rem}
+#rbubble p{font-size:.88rem;line-height:1.45;color:var(--clr-text-main);margin:0}
+#rbubble-close{position:fixed;left:22px;bottom:22px;display:none}
+
+/* Barra fixa no celular */
+#mobile-bar{display:none}
+@media(max-width:768px){
+  #mobile-bar{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;position:fixed;left:0;right:0;bottom:0;padding:.7rem .8rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(10px);box-shadow:0 -8px 30px rgba(10,46,87,.15);z-index:950;transform:translateY(110%);transition:transform .3s}
+  #mobile-bar.on{transform:none}
+  #mobile-bar .btn{padding:.8rem .5rem;font-size:.95rem;justify-content:center}
+  #mobile-bar .btn-ghost{background:var(--clr-primary-dark);color:#fff}
+  .whatsapp-float{display:none!important}
+  #rbubble{display:none}
+  .how-steps{grid-template-columns:1fr 1fr}
+  .who-box{grid-template-columns:1fr}
+  body{padding-bottom:70px}
+}
+@media(max-width:480px){.how-steps{grid-template-columns:1fr}}
+
+/* Aviso de cookies */
+#cookie-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(780px,calc(100% - 24px));background:#0A2E57;color:#fff;border-radius:18px;padding:16px 18px;box-shadow:0 20px 60px rgba(0,0,0,.35);z-index:3000;display:flex;gap:16px;align-items:center;flex-wrap:wrap;border:1px solid rgba(255,255,255,.15)}
+#cookie-bar[hidden]{display:none}
+#cookie-bar p{flex:1 1 320px;font-size:.9rem;line-height:1.5;color:rgba(255,255,255,.9);margin:0}
+#cookie-bar a{color:#FF9457;text-decoration:underline}
+#cookie-bar .cb-btns{display:flex;gap:.6rem}
+#cookie-bar button{font:600 .92rem var(--font-body);border-radius:100px;padding:.65rem 1.2rem;cursor:pointer;border:1.5px solid rgba(255,255,255,.5);background:transparent;color:#fff}
+#cookie-bar button.ok{background:var(--grad-accent);border-color:transparent}
+.link-btn{background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;font:inherit;padding:0}
+
+.form-lgpd{font-size:.78rem;color:var(--clr-text-muted);margin-top:.6rem;text-align:center}
+.form-lgpd a{color:var(--clr-primary);text-decoration:underline}
+
+@media(prefers-reduced-motion:reduce){.ps-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}#rbubble.on{animation:none}}
+@media(max-width:900px){.ps-item{min-width:120px;height:56px}}
+
+/* Correção: no celular o bloco do topo passava da largura da tela (texto cortado à direita) */
+.hero-container,.hero-content,.hero-image{min-width:0;max-width:100%}
+.hero-title{overflow-wrap:break-word}
+@media(max-width:768px){.hero-content{width:100%}.hero-trust{flex-wrap:wrap}.hero-actions{flex-wrap:wrap}.hero-actions .btn{max-width:100%}}
+.ps-item img[alt="Tokio Marine"]{max-height:52px;max-width:150px}
+.ps-item img[alt="APVS Brasil"]{max-height:46px}

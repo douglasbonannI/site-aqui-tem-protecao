@@ -49,6 +49,7 @@
       "@context": "https://schema.org",
       "@type": "InsuranceAgency",
       "name": "Aqui Tem Proteção",
+      "taxID": "43933798000137",
       "url": "https://www.aquitemprotecao.com.br",
       "logo": "https://www.aquitemprotecao.com.br/assets/logo-horizontal.png",
       "image": "https://www.aquitemprotecao.com.br/assets/og-image.png",
@@ -94,7 +95,7 @@
           },
           {
             "@type": "Offer",
-            "itemOffered": { "@type": "Service", "name": "Seguro Tradicional", "description": "Suhai e demais seguradoras parceiras. Coberturas completas regulamentadas pela SUSEP." }
+            "itemOffered": { "@type": "Service", "name": "Seguro Tradicional", "description": "Suhai e demais seguradoras parceiras. Coberturas completas fiscalizadas pela SUSEP." }
           },
           {
             "@type": "Offer",
@@ -122,25 +123,14 @@
 
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Meta Pixel Code (conjunto de dados "Pixel Aqui Tem Proteção", criado 2026-09-29 no portfólio "douglas bonanni") -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1646127083852614');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1646127083852614&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
+    <!-- Meta Pixel agora carrega só depois que o visitante aceita os cookies (ver analytics.js) -->
+    <link rel="stylesheet" href="extras.css">
+    <script src="config.js"></script>
+    <script src="analytics.js"></script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Proteção veicular é a mesma coisa que seguro?", "acceptedAnswer": {"@type": "Answer", "text": "Não. No seguro tradicional, você contrata uma seguradora fiscalizada pela SUSEP e recebe uma apólice. Na proteção veicular, você faz parte de uma associação de proteção patrimonial mutualista, em que os custos são divididos entre os associados. Desde a Lei Complementar 213/2025, essas associações também passaram a ser fiscalizadas pela SUSEP. Nós explicamos a diferença e comparamos as duas opções pro seu perfil."}}, {"@type": "Question", "name": "Quem protege o meu veículo?", "acceptedAnswer": {"@type": "Answer", "text": "Quem protege você é a seguradora ou a associação escolhida por você. Nós não somos a seguradora nem a associação: comparamos as opções, explicamos tudo sem letra miúda e te guiamos na escolha certa."}}, {"@type": "Question", "name": "Nós acompanhamos depois que eu contratar?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Nós acompanhamos você durante todo o período da proteção. Não vendemos e pronto: seguimos disponíveis pro que você precisar e intermediamos com a seguradora ou a associação sempre que for preciso."}}, {"@type": "Question", "name": "A cotação e a análise do meu perfil têm custo?", "acceptedAnswer": {"@type": "Answer", "text": "A análise de perfil e a cotação são gratuitas. Você preenche o formulário e nós falamos com você pelo WhatsApp com as opções que cabem no seu perfil."}}, {"@type": "Question", "name": "Vocês atendem em todo o Brasil?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. O atendimento é 100% online e nacional, com sede em João Pessoa (PB)."}}, {"@type": "Question", "name": "Serve para carro, moto e caminhão?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Cotamos para carro, moto, caminhão e utilitário. Informe o tipo do veículo e o uso (aplicativo, entregas, uso comercial) no formulário que nós indicamos as opções que atendem o seu caso."}}, {"@type": "Question", "name": "Sou motorista de aplicativo. Consigo contratar?", "acceptedAnswer": {"@type": "Answer", "text": "Informe no formulário que você é motorista de aplicativo. Nós analisamos o seu caso e indicamos as opções que aceitam o seu perfil."}}, {"@type": "Question", "name": "Como saber se a associação é fiscalizada pela SUSEP?", "acceptedAnswer": {"@type": "Answer", "text": "Sempre confira se a associação é fiscalizada pela SUSEP antes de contratar. Nós só trabalhamos com as que são."}}, {"@type": "Question", "name": "Meus dados estão seguros?", "acceptedAnswer": {"@type": "Answer", "text": "Usamos os seus dados só pra montar a sua cotação e falar com você. Veja os detalhes na nossa Política de Privacidade."}}]}</script>
 </head>
 <body>
+    <div id="read-progress"></div>
     <!-- Navbar sólida e sempre no topo (sem truque de transparência/wrapper — pra garantir
          que o clique funcione em qualquer contexto, inclusive dentro do preview) -->
     <header class="navbar" id="navbar">
@@ -160,11 +150,12 @@
                 <a href="#home">Início</a>
                 <a href="#solucoes">Nossas Soluções</a>
                 <a href="#sobre">Nossa Consultoria</a>
+                <a href="#perguntas">Perguntas</a>
                 <a href="#contato">Contato</a>
-                <a href="https://wa.me/5583988691217?text=Acabei%20de%20olhar%20o%20site%20de%20voc%C3%AAs%20e%20queria%20fazer%20uma%20cota%C3%A7%C3%A3o" target="_blank" rel="noopener" class="btn btn-primary nav-mobile-cta">Falar com Consultor</a>
+                <a href="https://wa.me/5583988691217?text=Acabei%20de%20olhar%20o%20site%20de%20voc%C3%AAs%20e%20queria%20fazer%20uma%20cota%C3%A7%C3%A3o" target="_blank" rel="noopener" class="btn btn-primary nav-mobile-cta">Fale conosco</a>
             </nav>
 
-            <a href="https://wa.me/5583988691217?text=Acabei%20de%20olhar%20o%20site%20de%20voc%C3%AAs%20e%20queria%20fazer%20uma%20cota%C3%A7%C3%A3o" target="_blank" rel="noopener" class="btn btn-primary nav-cta">Falar com Consultor</a>
+            <a href="https://wa.me/5583988691217?text=Acabei%20de%20olhar%20o%20site%20de%20voc%C3%AAs%20e%20queria%20fazer%20uma%20cota%C3%A7%C3%A3o" target="_blank" rel="noopener" class="btn btn-primary nav-cta" data-local="topo">Fale conosco</a>
 
             <button class="menu-toggle" aria-label="Abrir menu">
                 <i class="ph ph-list"></i>
@@ -193,7 +184,7 @@
                 <div class="hero-actions">
                     <a href="#cotacao" class="btn btn-primary btn-large pulse-btn">
                         <i class="ph-fill ph-lightning"></i>
-                        Resolver Meu Problema
+                        Receba sua cotação em minutos
                     </a>
                     <a href="#solucoes" class="btn btn-outline">
                         Conhecer Opções <i class="ph ph-arrow-down"></i>
@@ -238,7 +229,14 @@
         </div>
     </section>
 
-    <!-- Seção de dor / necessidade -->
+        <!-- Empresas parceiras -->
+    <section class="partners-strip" aria-label="Empresas parceiras">
+        <div class="container"><div class="ps-title">Nossas empresas parceiras</div></div>
+        <div class="ps-track"><div class="ps-item"><img src="assets/parceiras/porto-seguro.svg" alt="Porto Seguro"></div><div class="ps-item"><img src="assets/parceiras/suhai.svg" alt="Suhai"></div><div class="ps-item"><img src="assets/parceiras/novo-seguros.webp" alt="Novo Seguros"></div><div class="ps-item"><img src="assets/parceiras/azul-seguros.svg" alt="Azul Seguros"></div><div class="ps-item"><img src="assets/parceiras/splitrisk.png" alt="SplitRisk"></div><div class="ps-item"><img src="assets/parceiras/protebem.png" alt="Protebem"></div><div class="ps-item"><img src="assets/parceiras/agv.png" alt="Universo AGV"></div><div class="ps-item"><img src="assets/parceiras/apvs.jpg" alt="APVS Brasil"></div><div class="ps-item"><img src="assets/parceiras/tokio-marine.png" alt="Tokio Marine"></div><div class="ps-item"><img src="assets/parceiras/youse.png" alt="Youse"></div><div class="ps-item"><img src="assets/parceiras/justos.png" alt="Justos"></div><div class="ps-item"><img src="assets/parceiras/porto-seguro.svg" alt="Porto Seguro"></div><div class="ps-item"><img src="assets/parceiras/suhai.svg" alt="Suhai"></div><div class="ps-item"><img src="assets/parceiras/novo-seguros.webp" alt="Novo Seguros"></div><div class="ps-item"><img src="assets/parceiras/azul-seguros.svg" alt="Azul Seguros"></div><div class="ps-item"><img src="assets/parceiras/splitrisk.png" alt="SplitRisk"></div><div class="ps-item"><img src="assets/parceiras/protebem.png" alt="Protebem"></div><div class="ps-item"><img src="assets/parceiras/agv.png" alt="Universo AGV"></div><div class="ps-item"><img src="assets/parceiras/apvs.jpg" alt="APVS Brasil"></div><div class="ps-item"><img src="assets/parceiras/tokio-marine.png" alt="Tokio Marine"></div><div class="ps-item"><img src="assets/parceiras/youse.png" alt="Youse"></div><div class="ps-item"><img src="assets/parceiras/justos.png" alt="Justos"></div></div>
+        <p class="ps-note">Nós comparamos várias pra achar a certa pra você.</p>
+    </section>
+
+<!-- Seção de dor / necessidade -->
     <section class="pain-section" id="dores">
         <div class="container">
             <div class="section-header text-center slide-up">
@@ -315,7 +313,7 @@
                         <div class="badge-sm badge-orange">A Escolha Sólida</div>
                     </div>
                     <h3>Seguro Tradicional</h3>
-                    <p>Contrato direto com seguradoras regulamentadas pela SUSEP, com apólice e ampla cobertura. Indicado pra quem quer o formato mais tradicional do mercado, com benefícios extras e familiaridade com sistemas consolidados.</p>
+                    <p>Contrato direto com seguradoras fiscalizadas pela SUSEP, com apólice e ampla cobertura. Indicado pra quem quer o formato mais tradicional do mercado, com benefícios extras e familiaridade com sistemas consolidados.</p>
 
                     <div class="features-list">
                         <h4>Parceira de Confiança:</h4>
@@ -354,7 +352,36 @@
         </div>
     </section>
 
-    <!-- Avaliações reais do Google -->
+        <!-- Como funciona + acompanhamento -->
+    <section class="how" id="como-funciona">
+        <div class="container">
+            <div class="section-header text-center slide-up">
+                <span class="subtitle">Como funciona</span>
+                <h2>Nós conhecemos você e seu veículo, comparamos e te guiamos à escolha certa</h2>
+                <p>Do primeiro contato até depois da contratação, você tem alguém do seu lado.</p>
+            </div>
+            <div class="how-steps">
+                <div class="how-step slide-up"><h3>Você conta</h3><p>Nos diz o veículo e o seu perfil. Carro, moto ou caminhão.</p></div>
+                <div class="how-step slide-up delay-1"><h3>Nós comparamos</h3><p>Analisamos e comparamos as opções entre várias seguradoras e associações.</p></div>
+                <div class="how-step slide-up delay-2"><h3>Você escolhe</h3><p>Entendendo tudo, sem letra miúda. A decisão é sempre sua.</p></div>
+                <div class="how-step slide-up delay-2"><h3>Nós acompanhamos</h3><p>Ficamos com você durante todo o período da proteção.</p></div>
+            </div>
+            <div class="who-box">
+                <div class="who-card slide-up">
+                    <i class="ph-fill ph-shield-check"></i>
+                    <h3>Quem protege você é a <span class="grad">seguradora escolhida por você</span></h3>
+                    <p>Nós não somos a seguradora nem a associação. Somos a consultoria que compara, explica e te guia na escolha. Quem assume a proteção é a empresa parceira que você escolher.</p>
+                </div>
+                <div class="who-card alt slide-up delay-1">
+                    <i class="ph-fill ph-handshake"></i>
+                    <h3>Não vendemos e pronto. <span class="grad">Ficamos com você.</span></h3>
+                    <p>Seguimos disponíveis pro que você precisar durante todo o período da proteção e intermediamos com a seguradora ou a associação sempre que for preciso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Avaliações reais do Google -->
     <section class="testimonials" id="avaliacoes">
         <div class="container">
             <div class="section-header text-center slide-up">
@@ -543,6 +570,7 @@
                         <i class="ph-bold ph-paper-plane-right"></i> Solicitar Cotação Completa
                     </button>
                     <p class="form-disclaimer">Seus dados estão seguros. Não enviamos spam ou ligações chatas.</p>
+                    <p class="form-lgpd">Usamos os seus dados só pra montar a cotação. Veja a <a href="privacidade.html">Política de Privacidade</a>.</p>
                 </form>
             </div>
         </div>
@@ -591,7 +619,29 @@
         </div>
     </section>
 
-    <!-- CTA final -->
+        <!-- Perguntas frequentes -->
+    <section class="faq" id="perguntas">
+        <div class="container">
+            <div class="section-header text-center slide-up">
+                <span class="subtitle">Perguntas frequentes</span>
+                <h2>O que mais nos perguntam</h2>
+                <p>Respostas diretas, sem letra miúda. Não achou a sua? Chame a gente no WhatsApp.</p>
+            </div>
+            <div class="faq-list">
+                <details><summary>Proteção veicular é a mesma coisa que seguro?</summary><div class="ans">Não. No seguro tradicional, você contrata uma seguradora fiscalizada pela SUSEP e recebe uma apólice. Na proteção veicular, você faz parte de uma associação de proteção patrimonial mutualista, em que os custos são divididos entre os associados. Desde a Lei Complementar 213/2025, essas associações também passaram a ser fiscalizadas pela SUSEP. Nós explicamos a diferença e comparamos as duas opções pro seu perfil.</div></details>
+                <details><summary>Quem protege o meu veículo?</summary><div class="ans">Quem protege você é a seguradora ou a associação escolhida por você. Nós não somos a seguradora nem a associação: comparamos as opções, explicamos tudo sem letra miúda e te guiamos na escolha certa.</div></details>
+                <details><summary>Nós acompanhamos depois que eu contratar?</summary><div class="ans">Sim. Nós acompanhamos você durante todo o período da proteção. Não vendemos e pronto: seguimos disponíveis pro que você precisar e intermediamos com a seguradora ou a associação sempre que for preciso.</div></details>
+                <details><summary>A cotação e a análise do meu perfil têm custo?</summary><div class="ans">A análise de perfil e a cotação são gratuitas. Você preenche o formulário e nós falamos com você pelo WhatsApp com as opções que cabem no seu perfil.</div></details>
+                <details><summary>Vocês atendem em todo o Brasil?</summary><div class="ans">Sim. O atendimento é 100% online e nacional, com sede em João Pessoa (PB).</div></details>
+                <details><summary>Serve para carro, moto e caminhão?</summary><div class="ans">Sim. Cotamos para carro, moto, caminhão e utilitário. Informe o tipo do veículo e o uso (aplicativo, entregas, uso comercial) no formulário que nós indicamos as opções que atendem o seu caso.</div></details>
+                <details><summary>Sou motorista de aplicativo. Consigo contratar?</summary><div class="ans">Informe no formulário que você é motorista de aplicativo. Nós analisamos o seu caso e indicamos as opções que aceitam o seu perfil.</div></details>
+                <details><summary>Como saber se a associação é fiscalizada pela SUSEP?</summary><div class="ans">Sempre confira se a associação é fiscalizada pela SUSEP antes de contratar. Nós só trabalhamos com as que são.</div></details>
+                <details><summary>Meus dados estão seguros?</summary><div class="ans">Usamos os seus dados só pra montar a sua cotação e falar com você. Veja os detalhes na nossa <a href="privacidade.html">Política de Privacidade</a>.</div></details>
+            </div>
+        </div>
+    </section>
+
+<!-- CTA final -->
     <section class="cta-banner">
         <div class="cta-bg"></div>
         <div class="container cta-container slide-up">
@@ -648,10 +698,11 @@
 
         <div class="footer-bottom">
             <div class="container footer-bottom-flex">
-                <p>&copy; 2026 Aqui Tem Proteção. Todos os direitos reservados.</p>
+                <p>&copy; 2026 Aqui Tem Proteção · CNPJ 43.933.798/0001-37. Todos os direitos reservados.</p>
                 <div class="legal-links">
-                    <a href="#">Termos de Uso</a>
-                    <a href="#">Privacidade</a>
+                    <a href="termos.html">Termos de Uso</a>
+                    <a href="privacidade.html">Privacidade</a>
+                    <button class="link-btn" data-cookie-open type="button">Preferências de cookies</button>
                 </div>
             </div>
         </div>
@@ -662,6 +713,17 @@
         <i class="ph-fill ph-whatsapp-logo"></i>
     </a>
 
+    <div id="rbubble" aria-live="polite"></div>
+    <div id="mobile-bar">
+        <a class="btn btn-primary" data-local="barra_celular" target="_blank" rel="noopener" href="https://wa.me/5583988691217?text=Oi!%20Vim%20pelo%20site%20e%20quero%20entender%20qual%20a%20melhor%20forma%20de%20proteger%20meu%20ve%C3%ADculo"><i class="ph-fill ph-whatsapp-logo"></i> WhatsApp</a>
+        <a class="btn btn-ghost" data-local="barra_celular" href="#cotacao"><i class="ph-fill ph-file-text"></i> Cotar</a>
+    </div>
+    <div id="cookie-bar" hidden role="dialog" aria-label="Aviso de cookies">
+        <p>Usamos cookies para entender como o site é usado e melhorar a sua experiência. Você escolhe: pode recusar e continuar navegando normalmente. Saiba mais na <a href="privacidade.html">Política de Privacidade</a>.</p>
+        <div class="cb-btns"><button id="cookie-reject" type="button">Recusar</button><button id="cookie-accept" class="ok" type="button">Aceitar</button></div>
+    </div>
+    <script src="reviews.js"></script>
     <script src="script.js"></script>
+    <script src="extras.js"></script>
 </body>
 </html>
