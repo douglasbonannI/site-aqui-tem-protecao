@@ -65,3 +65,42 @@
   var close = document.getElementById('rbubble-close');
   if (close) close.addEventListener('click', function () { box.classList.remove('on'); clearTimeout(timer); box.remove(); close.remove(); });
 })();
+
+/* Carrosséis do celular: seta laranja em cima dos cartões, pontinhos embaixo e aviso que some ao deslizar */
+(function () {
+  var GAP = 14;
+  document.querySelectorAll('.pain-grid,.services-grid,.how-steps,.review-grid').forEach(function (t) {
+    var hint = t.previousElementSibling && t.previousElementSibling.classList.contains('swipe-hint') ? t.previousElementSibling : null;
+    var wrap = document.createElement('div');
+    wrap.className = 'carousel-wrap';
+    t.parentNode.insertBefore(wrap, t);
+    wrap.appendChild(t);
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'car-next';
+    btn.setAttribute('aria-label', 'Ver o próximo');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    wrap.appendChild(btn);
+    var dots = document.createElement('div');
+    dots.className = 'car-dots';
+    dots.setAttribute('aria-hidden', 'true');
+    var n = t.children.length;
+    for (var k = 0; k < n; k++) dots.appendChild(document.createElement('span'));
+    wrap.appendChild(dots);
+    function update() {
+      var step = (t.children[0] ? t.children[0].offsetWidth : 1) + GAP;
+      var atEnd = t.scrollLeft + t.clientWidth >= t.scrollWidth - 6;
+      var idx = atEnd ? n - 1 : Math.min(n - 1, Math.round(t.scrollLeft / step));
+      Array.prototype.forEach.call(dots.children, function (d, j) { d.className = j === idx ? 'on' : ''; });
+      btn.classList.toggle('hide', atEnd);
+      if (hint && t.scrollLeft > 20) hint.classList.add('done');
+    }
+    t.addEventListener('scroll', update, { passive: true });
+    btn.addEventListener('click', function () {
+      var step = (t.children[0] ? t.children[0].offsetWidth : 280) + GAP;
+      var next = Math.min(n - 1, Math.round(t.scrollLeft / step) + 1);
+      t.scrollTo({ left: next * step, behavior: 'smooth' });
+    });
+    update();
+  });
+})();
